@@ -3,12 +3,12 @@ import chess
 import chess.pgn
 import numpy as np
 from sklearn.neural_network import MLPClassifier
-import io, pickle
+import io, joblib
 
 # load PGN files in GAMES directory
 def load_pgn_games():
     games = []
-    STATICCAP = 350
+    STATICCAP = 761
     cap = STATICCAP
     for filename in os.listdir("GAMES"):
         if cap == 0:
@@ -54,7 +54,7 @@ def get_training_data(games):
 
 # train model on extracted data
 def train_model(inputs, outputs):
-    clf = MLPClassifier(hidden_layer_sizes=(64, 64), max_iter=10000)
+    clf = MLPClassifier(hidden_layer_sizes=(64, 64), max_iter=10000, learning_rate="adaptive", learning_rate_init=0.01)
     clf.fit(inputs, outputs)
     return clf
 
@@ -67,5 +67,5 @@ def main():
 
 if __name__ == "__main__":
     model = main()
-    with open("model.pickle", "wb") as f:
-        pickle.dump(model, f)
+    with open("model.dmp", "wb") as f:
+        joblib.dump(model, f)

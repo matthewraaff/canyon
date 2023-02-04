@@ -9,12 +9,12 @@ import requests
 import chess
 import chess.pgn
 import numpy as np
-import pickle
+import joblib
 
 # load the model from disk
 def load_model():
-    with open("model.pickle", "rb") as f:
-        return pickle.load(f)
+    with open("model.dmp", "rb") as f:
+        return joblib.load(f)
 
 # convert board to feature vector
 def board_to_input(board):
@@ -30,7 +30,7 @@ def board_to_input(board):
 class ChessGame:
     def __init__(self, master):
         self.master = master
-        master.title("Chess Game")
+        master.title("Canyon Interface b1.1")
 
         self.board = chess.Board()
         self.model = load_model()
