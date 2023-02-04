@@ -9,6 +9,8 @@ def load_model():
     with open("model.pickle", "rb") as f:
         return pickle.load(f)
 
+PLAYER = False
+
 # convert board to feature vector
 def board_to_input(board):
     input_vector = []
@@ -41,6 +43,7 @@ def play():
             inputs = board_to_input(board)
             prediction = model.predict(inputs)[0]
             move = list(board.legal_moves)[prediction]
+            print("AI move:", move)
             board.push(move)
     result = board.result()
     print("Result:", result)

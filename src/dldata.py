@@ -13,8 +13,6 @@ def fetchData(profile, month, year):
         with open('GAMES/{}.pgn'.format(game['uuid']), 'w') as f:
             f.write(game['pgn'])
 
-
-
 def main():
     profile = input("Enter chess.com username: ")
     games = fetchData(profile, 1, 2023)

@@ -8,12 +8,14 @@ import io, pickle
 # load PGN files in GAMES directory
 def load_pgn_games():
     games = []
-    cap = 10
+    STATICCAP = 350
+    cap = STATICCAP
     for filename in os.listdir("GAMES"):
         if cap == 0:
             break
         with open(f"GAMES/{filename}") as f:
             cap -= 1
+            print("PERCENTAGE: ", (STATICCAP - cap) / STATICCAP * 100, "%" )
             print(f"Loading {filename}...")
             pgn = f.read()
             end = pgn.rfind("1-0")
