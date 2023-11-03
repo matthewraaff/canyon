@@ -1,1 +1,2 @@
-src/TEMP/*
+/target
+Cargo.lock
