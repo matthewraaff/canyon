@@ -41,3 +41,5 @@ fn minimax(node: &Node, depth: i32, maximising_player: bool) -> i32 {
 fn main() {
     println!("hello world");
 }
+
+// git test
